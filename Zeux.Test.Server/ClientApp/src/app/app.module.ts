@@ -10,12 +10,15 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from 'src/app/app.auth.interseptor';
 
+import { CapitalFirstLetterPipe } from './pipes/capital-first-letter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     OpportunitiesComponent,
     MyAssetsComponent,
-    HeaderComponent
+    HeaderComponent,
+    CapitalFirstLetterPipe
   ],
   imports: [
     CommonModule,

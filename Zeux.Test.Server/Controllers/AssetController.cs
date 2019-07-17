@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zeux.Test.Models;
 using Zeux.Test.Services;
+using System.Linq;
 
 namespace Zeux.Test.Server.Controllers
 {
@@ -18,20 +19,23 @@ namespace Zeux.Test.Server.Controllers
             _assetService = assetService;
         }
 
+        //async is not needed
         [HttpGet("[action]/{type}")]
-        public async Task<IEnumerable<Asset>> Get(string type)
+        public Task<IEnumerable<Asset>> Get(string type)
         {
-
+            var result = Task.FromResult(Enumerable.Empty<Asset>());
             if (string.IsNullOrWhiteSpace(type) || type.ToLower() == "all")
-                return await _assetService.Get();
+                result = _assetService.Get();
+            else result = _assetService.Get(type);
 
-            return await _assetService.Get(type);
+            return result;
         }
 
         [HttpGet("[action]")]
         public async Task<IEnumerable<AssetType>> GetTypes()
         {
-            return await _assetService.GetTypes();
+            var result = await _assetService.GetTypes();
+            return result.ToArray();
         }
     }
 }

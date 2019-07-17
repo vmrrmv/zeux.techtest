@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Zeux.Test.Services;
@@ -33,7 +32,7 @@ namespace Zeux.Test.Server.Controllers
             {
                 Response.StatusCode = 400;
                 await Response.WriteAsync("Invalid username or password.");
-                return; 
+                return;
             }
 
             var now = DateTime.UtcNow;
@@ -56,7 +55,7 @@ namespace Zeux.Test.Server.Controllers
             Response.Cookies.Append("jwt-token", encodedJwt);
             Response.Cookies.Append("jwt-user", identity.Name);
 
-            var result = JsonConvert.SerializeObject(response, new JsonSerializerSettings {Formatting = Formatting.Indented});
+            var result = JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });
             await Response.WriteAsync(result);
         }
 

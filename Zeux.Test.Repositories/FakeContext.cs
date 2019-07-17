@@ -23,18 +23,20 @@ namespace Zeux.Test.Repositories
                 }).AsQueryable();
 
             var assetTypes = AssetTypes.ToList();
+            // assets have renamed for angular pipe demo
+            // assets indexes have cahnged for  sort demo
             Assets = (new List<Asset>
                 {
-                    new Asset() { Id = 1, Name = "Name of investment 1", Percent = 0.235m, Sum = 400m, Type = assetTypes[0] },
-                    new Asset() { Id = 1, Name = "Name of investment 2", Percent = 0.135m, Sum = 300m, Type = assetTypes[1] },
-                    new Asset() { Id = 1, Name = "Name of investment 3", Percent = 0.115m, Sum = 200m, Type = assetTypes[2] },
-                    new Asset() { Id = 1, Name = "Name of investment 4", Percent = 0.2m, Sum = 100m, Type = assetTypes[0] },
-                    new Asset() { Id = 1, Name = "Name of investment 5", Percent = 0.96m, Sum = 460m, Type = assetTypes[1] },
-                    new Asset() { Id = 1, Name = "Name of investment 6", Percent = 0.78m, Sum = 450m, Type = assetTypes[2] },
-                    new Asset() { Id = 1, Name = "Name of investment 7", Percent = 0.12m, Sum = 460m, Type = assetTypes[0] },
-                    new Asset() { Id = 1, Name = "Name of investment 8", Percent = 0.10m, Sum = 300m, Type = assetTypes[1] },
-                    new Asset() { Id = 1, Name = "Name of investment 9", Percent = 0.59m, Sum = 500m, Type = assetTypes[2] },
-                    new Asset() { Id = 1, Name = "Name of investment 10", Percent = 0.44m, Sum = 50m, Type = assetTypes[0] }
+                    new Asset() { Id = 1, Name = "bannana", Percent = 0.135m, Sum = 300m, Type = assetTypes[0] },
+                    new Asset() { Id = 1, Name = "apple", Percent = 0.235m, Sum = 400m, Type = assetTypes[0] },
+                    new Asset() { Id = 1, Name = "name of investment 4", Percent = 0.2m, Sum = 100m, Type = assetTypes[0] },
+                    new Asset() { Id = 1, Name = "orange", Percent = 0.115m, Sum = 200m, Type = assetTypes[0] },
+                    new Asset() { Id = 1, Name = "name of investment 5", Percent = 0.96m, Sum = 460m, Type = assetTypes[1] },
+                    new Asset() { Id = 1, Name = "name of investment 6", Percent = 0.78m, Sum = 450m, Type = assetTypes[2] },
+                    new Asset() { Id = 1, Name = "name of investment 7", Percent = 0.12m, Sum = 460m, Type = assetTypes[0] },
+                    new Asset() { Id = 1, Name = "name of investment 8", Percent = 0.10m, Sum = 300m, Type = assetTypes[1] },
+                    new Asset() { Id = 1, Name = "name of investment 9", Percent = 0.59m, Sum = 500m, Type = assetTypes[2] },
+                    new Asset() { Id = 1, Name = "name of investment 10", Percent = 0.44m, Sum = 50m, Type = assetTypes[0] }
                 }).AsQueryable();
         }
 

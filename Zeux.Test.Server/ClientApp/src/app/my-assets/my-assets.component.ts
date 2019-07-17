@@ -12,6 +12,7 @@ export class MyAssetsComponent implements OnInit {
   private type: string;
   private assetTypes: Array<AssetType>;
   private assets: Array<Asset>;
+  private assetsState:Array<Asset>;
 
   constructor(private route: ActivatedRoute,
     private http: HttpClient,
@@ -24,7 +25,7 @@ export class MyAssetsComponent implements OnInit {
 
   ngOnInit() {
     this.type = this.route.snapshot.params.type;
-    this.reloadAssets();
+    this.loadAssets();
 
     const uriAssetTypes = '/api/asset/GetTypes';
 
@@ -36,18 +37,28 @@ export class MyAssetsComponent implements OnInit {
     this.router.events
     .subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.reloadAssets();
+        this.applyFilter();
     }});
   }
 
-  reloadAssets() {
-    const uriAsset = '/api/asset/Get/' + this.route.snapshot.params.type;
+  applyFilter() {
+    var routeTypeParam = this.route.snapshot.params.type.toLowerCase();
+    if(routeTypeParam == 'all'){
+      this.assetsState = this.assets;
+    }
+    else 
+      this.assetsState = this.assets.filter(x=>x.type.name.toLowerCase() == this.route.snapshot.params.type.toLowerCase())
+  }
+
+  loadAssets(){
+    const uriAsset = '/api/asset/Get/all';
     this.http.get<Array<Asset>>(uriAsset, this.httpOptions)
     .subscribe((dataAssets: Array<Asset>) => {
           this.assets = dataAssets;
+          this.assetsState = dataAssets;
+          this.applyFilter();
       });
   }
-
 }
 
 export class AssetType {

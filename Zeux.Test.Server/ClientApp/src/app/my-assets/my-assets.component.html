@@ -1,17 +1,17 @@
 <div class="fixed-menu">
-    <div class="filter">
+  <div class="filter">
 
-        <div class="filter-element"><a routerLink="/myassets/all" routerLinkActive="active">ALL</a></div>
-        <div *ngFor="let assetType of assetTypes" class="filter-element"><a routerLink="/myassets/{{assetType.name.toLowerCase()}}" routerLinkActive="active">{{assetType.name}}</a></div>
+    <div class="filter-element"><a routerLink="/myassets/all" routerLinkActive="active">ALL</a></div>
+    <div *ngFor="let assetType of assetTypes" class="filter-element"><a routerLink="/myassets/{{assetType.name.toLowerCase()}}" routerLinkActive="active">{{assetType.name}}</a></div>
 
-    </div>
+  </div>
 </div>
 <div class="content">
   <div class="list">
-    <div *ngFor="let asset of assets" class="item"> 
+    <div *ngFor="let asset of assetsState" class="item">
       <div class="item-left">
         <div class="item-category">{{asset.type.name}}</div>
-        <div class="item-title">{{asset.name}}</div>
+        <div class="item-title">{{asset.name | capitalfirstletter}}</div>
         <div class="item-saving">%{{asset.percent * 100}}</div>
       </div>
       <div class="item-right">£{{asset.sum}}</div>
